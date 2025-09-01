@@ -37,12 +37,12 @@ class AppRouter extends GoRouter {
               GoRoute(
                 path: PageRoutes.login.path,
                 name: PageRoutes.login.name,
-                builder: (_, __) => const LoginScreen(),
+                builder: (_, _) => const LoginScreen(),
               ),
               GoRoute(
                 path: PageRoutes.register.path,
                 name: PageRoutes.register.name,
-                builder: (_, __) => BlocProvider(
+                builder: (_, _) => BlocProvider(
                   create: (_) => sl<RegisterCubit>(),
                   child: const RegisterScreen(),
                 ),

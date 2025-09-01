@@ -32,13 +32,25 @@ class RequestRegister extends Equatable {
   });
 
   Map<String, dynamic> toJson() => {
-        'first_name': firstName,
-        'last_name': lastName,
-        'password': password,
-        'email': email,
-        'phone': phone,
-      };
+    'first_name': firstName,
+    'last_name': lastName,
+    'password': password,
+    'email': email,
+    'phone': phone,
+  };
 
   @override
   List<Object?> get props => [password, email, phone, firstName, lastName];
+}
+
+class RequestGoogleAuth extends Equatable {
+  final String email;
+  final String idToken;
+
+  const RequestGoogleAuth({required this.email, required this.idToken});
+
+  Map<String, dynamic> toJson() => {'email': email, 'id_token': idToken};
+
+  @override
+  List<Object?> get props => [email, idToken];
 }

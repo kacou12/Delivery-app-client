@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my/core/ext/context.dart';
 import 'package:my/core/ext/string.dart';
 import 'package:my/core/resources/dimens.dart';
@@ -133,6 +134,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
               },
             ),
+            SpacerV(value: Dimens.space24),
+            () {
+              if (GoogleSignIn.instance.supportsAuthenticate()) {
+                return const SignInButton();
+              }
+              return Container();
+            }(),
           ],
         ),
       );
@@ -216,6 +224,20 @@ class _PasswordInputState extends State<_PasswordInput> {
           ),
         );
       },
+    );
+  }
+}
+
+class SignInButton extends StatelessWidget {
+  const SignInButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () async {
+        context.read<LoginCubit>().loginWithGoogle();
+      },
+      child: const Text('Se connecter avec Google'),
     );
   }
 }
