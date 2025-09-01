@@ -23,6 +23,22 @@ abstract class UserModel with _$UserModel {
     String? token,
   }) = _UserModel;
 
+  factory UserModel.emptyData() {
+    return UserModel(
+      id: '',
+      createdAt: '',
+      updatedAt: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      role: '',
+      isVerified: false,
+      isActive: false,
+      lastLoginAt: '',
+      merchantId: '',
+    );
+  }
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 }

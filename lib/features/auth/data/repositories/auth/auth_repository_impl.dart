@@ -7,11 +7,13 @@ import 'package:my/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:my/features/auth/data/models/user_model.dart';
 import 'package:my/features/auth/data/payload/requests/request_auth.dart';
 import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
   final AuthLocalDataSource store;
+  bool isInitialize = false;
 
   AuthRepositoryImpl(this.remoteDataSource, this.networkInfo, this.store);
 
@@ -100,6 +102,75 @@ class AuthRepositoryImpl implements AuthRepository {
         //           'Erreur inconnue';
         //   return Left(ServerFailure(message: errorMessage));
         // }
+      } catch (e) {
+        return Left(CacheFailure(message: "$e"));
+      }
+    } else {
+      return const Left(
+        CacheFailure(message: "Veuillez verifier votre connection internet"),
+      );
+    }
+  }
+
+  FutureResult<UserModel> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+    if (!isInitialize) {
+      await googleSignIn.initialize(
+        serverClientId:
+            // "31201217117-tnejjrhsakmmjn4ohias2jj7b3q9eacf.apps.googleusercontent.com",
+            "31201217117-fhhn0kqf88b1d53a43gr7eneug9cgp3l.apps.googleusercontent.com",
+      );
+      isInitialize = true;
+    }
+
+    final GoogleSignInAccount googleUser = await googleSignIn.authenticate(
+      scopeHint: ['email', 'profile'],
+    );
+
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+    final googlAuthResult = await _authenticateWithGoogle(
+      googleUser: googleUser,
+      idToken: googleAuth.idToken!,
+    );
+
+    return googlAuthResult.fold((failure) => Left(failure), (response) async {
+      await store.saveData(response);
+      return Right(response);
+    });
+  }
+
+  FutureResult<UserModel> _authenticateWithGoogle({
+    required GoogleSignInAccount googleUser,
+    required String idToken,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await remoteDataSource.authenticateByGoogle(
+          requests: RequestGoogleAuth(
+            email: googleUser.email,
+            idToken: idToken,
+          ),
+        );
+
+        return response.fold((failure) => Left(failure), (user) async {
+          //  have no account
+          if (user == null) {
+            final newUserReponse = await register(
+              RequestParamsRegister(
+                firstName: googleUser.displayName!.split(" ")[0],
+                lastName: googleUser.displayName!.split(" ")[1],
+                email: googleUser.email,
+                password: "",
+                phone: "",
+              ),
+            );
+            final tets = newUserReponse.getOrElse(() => UserModel.emptyData());
+            return Right(newUserReponse.getOrElse(() => UserModel.emptyData()));
+          }
+
+          return Right(user);
+        });
       } catch (e) {
         return Left(CacheFailure(message: "$e"));
       }

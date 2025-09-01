@@ -10,6 +10,9 @@ abstract class AuthRemoteDataSource {
 
   FutureResult<UserModel> myProfile();
   FutureResult<UserModel> register({required RequestRegister requests});
+  FutureResult<UserModel?> authenticateByGoogle({
+    required RequestGoogleAuth requests,
+  });
   FutureResult<void> logout();
 
   FutureResult<Map<String, String>> sendPasswordReset(String email);
@@ -59,6 +62,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   FutureResult<UserModel> register({required RequestRegister requests}) async {
     final response = await dio.postRequest(
       ListAPI.register,
+      data: requests.toJson(),
+      converter: (response) =>
+          UserModel.fromJson(response as Map<String, dynamic>),
+    );
+
+    return response;
+  }
+
+  @override
+  FutureResult<UserModel?> authenticateByGoogle({
+    required RequestGoogleAuth requests,
+  }) async {
+    final response = await dio.postRequest(
+      ListAPI.googleAuth,
       data: requests.toJson(),
       converter: (response) =>
           UserModel.fromJson(response as Map<String, dynamic>),
