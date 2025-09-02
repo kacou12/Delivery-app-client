@@ -15,6 +15,7 @@ import 'package:my/core/widgets/my_form_builder.dart';
 import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
 import 'package:my/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 import 'package:my/features/auth/presentation/blocs/login_cubit/login_cubit.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../../core/widgets/widgets.dart';
 
@@ -83,7 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ButtonText(
                     title: "Register",
                     onPressed: () {
-                      // TODO : implement register
                       context.pushNamed(PageRoutes.register.name);
                     },
                   ),
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _loginForm() => BlocBuilder<LoginCubit, LoginState>(
-    builder: (_, __) {
+    builder: (_, _) {
       return MyFormBuilder(
         formKey: cubit.formKey,
         child: Column(
@@ -141,6 +141,16 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               return Container();
             }(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SignInWithAppleButton(
+                  onPressed: () {
+                    context.read<LoginCubit>().loginWithApple();
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       );
