@@ -8,6 +8,7 @@ import 'package:my/features/auth/data/models/user_model.dart';
 import 'package:my/features/auth/data/payload/requests/request_auth.dart';
 import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -140,6 +141,32 @@ class AuthRepositoryImpl implements AuthRepository {
     });
   }
 
+  FutureResult<UserModel> signInWithApple() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+    if (!isInitialize) {
+      await googleSignIn.initialize(
+        serverClientId:
+            // "31201217117-tnejjrhsakmmjn4ohias2jj7b3q9eacf.apps.googleusercontent.com",
+            "31201217117-fhhn0kqf88b1d53a43gr7eneug9cgp3l.apps.googleusercontent.com",
+      );
+      isInitialize = true;
+    }
+
+    final credential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+    );
+
+    final googlAuthResult = await _authenticateWithApple(appleUser: credential);
+
+    return googlAuthResult.fold((failure) => Left(failure), (response) async {
+      await store.saveData(response);
+      return Right(response);
+    });
+  }
+
   FutureResult<UserModel> _authenticateWithGoogle({
     required GoogleSignInAccount googleUser,
     required String idToken,
@@ -147,7 +174,7 @@ class AuthRepositoryImpl implements AuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final response = await remoteDataSource.authenticateByGoogle(
-          requests: RequestGoogleAuth(
+          requests: RequestGoogleOrAppleAuth(
             email: googleUser.email,
             idToken: idToken,
           ),
@@ -165,7 +192,47 @@ class AuthRepositoryImpl implements AuthRepository {
                 phone: "",
               ),
             );
-            final tets = newUserReponse.getOrElse(() => UserModel.emptyData());
+            // final tets = newUserReponse.getOrElse(() => UserModel.emptyData());
+            return Right(newUserReponse.getOrElse(() => UserModel.emptyData()));
+          }
+
+          return Right(user);
+        });
+      } catch (e) {
+        return Left(CacheFailure(message: "$e"));
+      }
+    } else {
+      return const Left(
+        CacheFailure(message: "Veuillez verifier votre connection internet"),
+      );
+    }
+  }
+
+  FutureResult<UserModel> _authenticateWithApple({
+    required AuthorizationCredentialAppleID appleUser,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await remoteDataSource.authenticateByGoogle(
+          requests: RequestGoogleOrAppleAuth(
+            email: appleUser.email!,
+            idToken: appleUser.identityToken!,
+          ),
+        );
+
+        return response.fold((failure) => Left(failure), (user) async {
+          //  have no account
+          if (user == null) {
+            final newUserReponse = await register(
+              RequestParamsRegister(
+                firstName: appleUser.familyName!,
+                lastName: appleUser.givenName!,
+                email: appleUser.email!,
+                password: "",
+                phone: "",
+              ),
+            );
+            // final tets = newUserReponse.getOrElse(() => UserModel.emptyData());
             return Right(newUserReponse.getOrElse(() => UserModel.emptyData()));
           }
 

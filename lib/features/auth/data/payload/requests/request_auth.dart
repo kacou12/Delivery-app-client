@@ -43,11 +43,11 @@ class RequestRegister extends Equatable {
   List<Object?> get props => [password, email, phone, firstName, lastName];
 }
 
-class RequestGoogleAuth extends Equatable {
+class RequestGoogleOrAppleAuth extends Equatable {
   final String email;
   final String idToken;
 
-  const RequestGoogleAuth({required this.email, required this.idToken});
+  const RequestGoogleOrAppleAuth({required this.email, required this.idToken});
 
   Map<String, dynamic> toJson() => {'email': email, 'id_token': idToken};
 
