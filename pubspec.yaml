@@ -62,9 +62,13 @@ dependencies:
   flutter_form_builder: ^10.0.1
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
-  firebase_core: ^4.0.0
+  firebase_core: ^4.1.0
   firebase_crashlytics: ^5.0.0
   google_sign_in: ^7.1.1
+  mapbox_maps_flutter: ^2.10.0
+  flutter_dotenv: ^6.0.0
+  geolocator: ^14.0.2
+  shimmer_animation: ^2.2.2
 
 
 dependency_overrides:
@@ -111,6 +115,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/icons/tabs-icons/
+    - .env
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
