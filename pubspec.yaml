@@ -112,11 +112,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - .env
     - assets/images/
     - assets/icons/
+    - assets/icons/maps/
     - assets/fonts/
     - assets/icons/tabs-icons/
-    - .env
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

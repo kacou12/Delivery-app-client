@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart' as gl;
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mp;
 
 // class ProductsScreen extends StatelessWidget {
 //   const ProductsScreen({super.key});
@@ -41,151 +45,111 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class ProductsScreenState extends State<ProductsScreen> {
-  MapboxMap? mapboxMap;
-  var isLight = true;
+  mp.MapboxMap? mapboxMapController;
+  StreamSubscription<gl.Position>? userPositionStream;
 
-  void _onMapCreated(MapboxMap mapboxMap) {
-    this.mapboxMap = mapboxMap;
-    mapboxMap.style.setStyleImportConfigProperty(
-      "basemap",
-      "theme",
-      "monochrome",
+  @override
+  void initState() {
+    super.initState();
+    _setupPositionTracking();
+  }
+
+  @override
+  void dispose() {
+    userPositionStream?.cancel();
+    super.dispose();
+  }
+
+  void _onMapCreated(mp.MapboxMap controller) async {
+    setState(() {
+      mapboxMapController = controller;
+    });
+
+    // display user position on map
+    mapboxMapController?.location.updateSettings(
+      mp.LocationComponentSettings(enabled: true, pulsingEnabled: true),
     );
+
+    // add custom annotaion (icon map)
+    final pointAnnotationManager = await mapboxMapController?.annotations
+        .createPointAnnotationManager();
+    final Uint8List imageData = await loadHQMarkerImage();
+
+    final mp.PointAnnotationOptions pointAnnotationOptions =
+        mp.PointAnnotationOptions(
+          geometry: mp.Point(coordinates: mp.Position(-3.937725, 5.362296)),
+          image: imageData,
+          iconSize: 0.3,
+        );
+
+    await pointAnnotationManager?.create(pointAnnotationOptions);
   }
 
-  void _onStyleLoadedCallback(StyleLoadedEventData data) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Style loaded :), time: ${data.timeInterval}"),
-        backgroundColor: Theme.of(context).primaryColor,
-        duration: Duration(seconds: 1),
-      ),
+  Future<void> _setupPositionTracking() async {
+    bool serviceEnabled;
+    gl.LocationPermission permission;
+
+    serviceEnabled = await gl.Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await gl.Geolocator.checkPermission();
+    if (permission == gl.LocationPermission.denied) {
+      permission = await gl.Geolocator.requestPermission();
+      if (permission == gl.LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == gl.LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.',
+      );
+    }
+
+    gl.LocationSettings locationSettings = const gl.LocationSettings(
+      accuracy: gl.LocationAccuracy.high,
+      distanceFilter: 100,
     );
+
+    userPositionStream?.cancel();
+
+    userPositionStream =
+        gl.Geolocator.getPositionStream(
+          locationSettings: locationSettings,
+        ).listen((gl.Position? position) {
+          // print('position: ${position?.latitude}, ${position?.longitude}');
+          if (position != null && mapboxMapController != null) {
+            mapboxMapController!.setCamera(
+              mp.CameraOptions(
+                center: mp.Point(
+                  coordinates: mp.Position(
+                    position.longitude,
+                    position.latitude,
+                  ),
+                ),
+                zoom: 15,
+              ),
+            );
+          }
+        });
   }
 
-  void _onCameraChangeListener(CameraChangedEventData data) {
-    print("CameraChangedEventData: ${data.debugInfo}");
-  }
-
-  void _onResourceRequestListener(ResourceEventData data) {
-    print("ResourceEventData: time: ${data.timeInterval}");
-  }
-
-  void _onMapIdleListener(MapIdleEventData data) {
-    print("MapIdleEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onMapLoadedListener(MapLoadedEventData data) {
-    print("MapLoadedEventData: time: ${data.timeInterval}");
-  }
-
-  void _onMapLoadingErrorListener(MapLoadingErrorEventData data) {
-    print("MapLoadingErrorEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onRenderFrameStartedListener(RenderFrameStartedEventData data) {
-    print("RenderFrameStartedEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onRenderFrameFinishedListener(RenderFrameFinishedEventData data) {
-    print("RenderFrameFinishedEventData: time: ${data.timeInterval}");
-  }
-
-  void _onSourceAddedListener(SourceAddedEventData data) {
-    print("SourceAddedEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onSourceDataLoadedListener(SourceDataLoadedEventData data) {
-    print("SourceDataLoadedEventData: time: ${data.timeInterval}");
-  }
-
-  void _onSourceRemovedListener(SourceRemovedEventData data) {
-    print("SourceRemovedEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onStyleDataLoadedListener(StyleDataLoadedEventData data) {
-    print("StyleDataLoadedEventData: time: ${data.timeInterval}");
-  }
-
-  void _onStyleImageMissingListener(StyleImageMissingEventData data) {
-    print("StyleImageMissingEventData: timestamp: ${data.timestamp}");
-  }
-
-  void _onStyleImageUnusedListener(StyleImageUnusedEventData data) {
-    print("StyleImageUnusedEventData: timestamp: ${data.timestamp}");
+  Future<Uint8List> loadHQMarkerImage() async {
+    var byteData = await rootBundle.load(
+      'assets/icons/maps/restaurant_marker.png',
+    );
+    return byteData.buffer.asUint8List();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              heroTag: null,
-              onPressed: () {
-                setState(() => isLight = !isLight);
-                if (isLight) {
-                  mapboxMap?.style.setStyleImportConfigProperty(
-                    "basemap",
-                    "lightPreset",
-                    "day",
-                  );
-                } else {
-                  mapboxMap?.style.setStyleImportConfigProperty(
-                    "basemap",
-                    "lightPreset",
-                    "night",
-                  );
-                }
-              },
-              child: Icon(Icons.swap_horiz),
-            ),
-            SizedBox(height: 10),
-          ],
-        ),
-      ),
-      body: MapWidget(
-        key: ValueKey("mapWidget"),
-        cameraOptions: CameraOptions(
-          center: Point(
-            coordinates: Position(6.0033416748046875, 43.70908256335716),
-          ),
-          zoom: 3.0,
-        ),
-        styleUri: MapboxStyles.STANDARD,
-        textureView: true,
+      body: mp.MapWidget(
         onMapCreated: _onMapCreated,
-        onStyleLoadedListener: _onStyleLoadedCallback,
-        onCameraChangeListener: _onCameraChangeListener,
-        onMapIdleListener: _onMapIdleListener,
-        onMapLoadedListener: _onMapLoadedListener,
-        onMapLoadErrorListener: _onMapLoadingErrorListener,
-        onRenderFrameStartedListener: _onRenderFrameStartedListener,
-        onRenderFrameFinishedListener: _onRenderFrameFinishedListener,
-        onSourceAddedListener: _onSourceAddedListener,
-        onSourceDataLoadedListener: _onSourceDataLoadedListener,
-        onSourceRemovedListener: _onSourceRemovedListener,
-        onStyleDataLoadedListener: _onStyleDataLoadedListener,
-        onStyleImageMissingListener: _onStyleImageMissingListener,
-        onStyleImageUnusedListener: _onStyleImageUnusedListener,
-        onResourceRequestListener: _onResourceRequestListener,
-        onLongTapListener: (coordinate) {},
+        styleUri: mp.MapboxStyles.OUTDOORS,
       ),
     );
-  }
-}
-
-extension on CameraChangedEventData {
-  String get debugInfo {
-    return "timestamp ${DateTime.fromMicrosecondsSinceEpoch(timestamp)}, camera: ${cameraState.debugInfo}";
-  }
-}
-
-extension on CameraState {
-  String get debugInfo {
-    return "lat: ${center.coordinates.lat}, lng: ${center.coordinates.lng}, zoom: $zoom, bearing: $bearing, pitch: $pitch";
   }
 }
