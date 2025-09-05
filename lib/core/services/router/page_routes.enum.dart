@@ -24,6 +24,11 @@ enum PageRoutes {
   chat("/chat"),
   settings("/settings"),
   products("/products"),
+  productDetails("/user-home/product-details"),
+  productShippingInfo("/user-home/product-shipping-info"),
+  productPayment("/user-home/product-payment"),
+  productOrderConfirmation("/user-home/order-confirmation"),
+
   userHome("/user-home"),
 
   userProfil("/user-profil");

@@ -86,7 +86,7 @@ class AppRouter extends GoRouter {
                   GoRoute(
                     path: PageRoutes.forgotPassword.path,
                     name: PageRoutes.forgotPassword.name,
-                    builder: (_, __) => const ForgotPasswordEmailScreen(),
+                    builder: (_, _) => const ForgotPasswordEmailScreen(),
                   ),
                   GoRoute(
                     path: PageRoutes.forgotPasswordCode.path,
@@ -98,19 +98,19 @@ class AppRouter extends GoRouter {
                   GoRoute(
                     path: PageRoutes.resetPassword.path,
                     name: PageRoutes.resetPassword.name,
-                    builder: (_, __) => const ResetPasswordScreen(),
+                    builder: (_, _) => const ResetPasswordScreen(),
                   ),
                   GoRoute(
                     path: PageRoutes.successResetPassword.path,
                     name: PageRoutes.successResetPassword.name,
-                    builder: (_, __) => const PasswordSuccessScreen(),
+                    builder: (_, _) => const PasswordSuccessScreen(),
                   ),
                 ],
               ),
               GoRoute(
                 path: PageRoutes.onBoarding.path,
                 name: PageRoutes.onBoarding.name,
-                builder: (_, __) => const OnBoardingScreen(),
+                builder: (_, _) => const OnBoardingScreen(),
               ),
               GoRoute(
                 path: PageRoutes.splashScreen.path,
@@ -130,27 +130,13 @@ class AppRouter extends GoRouter {
                 },
                 builder: (context, state) => const SplashScreen(),
               ),
+
               StatefulShellRoute.indexedStack(
                 builder: (context, state, child) => ScreenLayout(child: child),
                 branches: [
                   StatefulShellBranch(
                     navigatorKey: _userNavigatorKey,
-                    routes: [
-                      GoRoute(
-                        path: PageRoutes.userHome.path,
-                        name: PageRoutes.userHome.name,
-                        builder: (context, state) => const UsersScreen(),
-                        routes: [
-                          GoRoute(
-                            parentNavigatorKey: _rootNavigatorKey,
-                            path: PageRoutes.userProfil.path,
-                            name: PageRoutes.userProfil.name,
-                            builder: (context, state) =>
-                                const UsersProfilScreen(),
-                          ),
-                        ],
-                      ),
-                    ],
+                    routes: userRoutes,
                   ),
                   StatefulShellBranch(
                     navigatorKey: _chatNavigatorKey,

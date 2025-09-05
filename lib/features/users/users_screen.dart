@@ -20,14 +20,15 @@ class UsersScreen extends StatelessWidget {
       // barrierColor: Colors.transparent,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Image.asset(
-            Images.icLauncher,
-            height: 20.h,
-          ),
+          title: Image.asset(Images.icLauncher, height: 20.h),
           content: SizedBox(
-            child: Text('Êtes-vous sûr de vouloir vous deconnecter?',
-                style: GoogleFonts.poppins(
-                    color: Colors.black, fontWeight: FontWeight.w500)),
+            child: Text(
+              'Êtes-vous sûr de vouloir vous deconnecter?',
+              style: GoogleFonts.poppins(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
           actions: <Widget>[
             CupertinoDialogAction(
@@ -35,9 +36,13 @@ class UsersScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Non',
-                  style: GoogleFonts.poppins(
-                      color: Colors.blue, fontWeight: FontWeight.w500)),
+              child: Text(
+                'Non',
+                style: GoogleFonts.poppins(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
             CupertinoDialogAction(
               onPressed: () {
@@ -47,7 +52,9 @@ class UsersScreen extends StatelessWidget {
               child: Text(
                 'Oui',
                 style: GoogleFonts.poppins(
-                    color: Colors.red, fontWeight: FontWeight.w500),
+                  color: Colors.red,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
@@ -82,28 +89,26 @@ class UsersScreen extends StatelessWidget {
                   Text(
                     "user home",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        // color: const Color.fromARGB(255, 113, 113, 113)),
-                        color: Colors.black),
+                      fontWeight: FontWeight.w500,
+                      // color: const Color.fromARGB(255, 113, 113, 113)),
+                      color: Colors.black,
+                    ),
                   ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
+                  SizedBox(height: height * 0.02),
                   SubmitButton(
                     title: "go detail",
                     onTap: () {
-                      context.goNamed(PageRoutes.userProfil.name);
+                      // context.goNamed(PageRoutes.userProfil.name);
+                      context.goNamed(PageRoutes.productDetails.name);
                     },
                   ),
-                  SizedBox(
-                    height: height * 0.02,
-                  ),
+                  SizedBox(height: height * 0.02),
                   SubmitButton(
                     title: "Loggout",
                     onTap: () {
                       _showCupertinoDialog(context);
                     },
-                  )
+                  ),
                 ],
               );
             },
