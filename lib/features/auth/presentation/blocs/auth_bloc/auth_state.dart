@@ -1,17 +1,14 @@
 part of 'auth_bloc.dart';
 
 class AuthState extends Equatable {
-  const AuthState({
-    this.status = AuthStatus.unknown,
-    this.user,
-  });
+  const AuthState({this.status = AuthStatus.unknown, this.user});
 
   final AuthStatus status;
   final UserModel? user;
 
-  get isAuthenticated => status == AuthStatus.authenticated;
+  bool get isAuthenticated => status == AuthStatus.authenticated;
 
-  get isUnauthenticated => status == AuthStatus.unauthenticated;
+  bool get isUnauthenticated => status == AuthStatus.unauthenticated;
 
   factory AuthState.unknown() =>
       const AuthState(status: AuthStatus.unknown, user: null);

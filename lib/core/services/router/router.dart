@@ -38,9 +38,6 @@ final _forgotPasswordNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'sectionANav',
 );
 
-final GlobalKey<NavigatorState> _paymentNavigatorKey =
-    GlobalKey<NavigatorState>();
-
 final _userNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: PageRoutes.userHome.name,
 );

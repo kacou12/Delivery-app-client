@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my/core/services/router/page_routes.enum.dart';
-import 'package:my/features/products/products_order/order_confirmation_screen.dart';
 
 class ProductPaymentScreen extends StatelessWidget {
   const ProductPaymentScreen({super.key});

@@ -227,7 +227,9 @@ class _ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
 
   final conPassword = TextEditingController();
 
-  getPassordValue(BuildContext context) {
+  FormBuilderFieldState<FormBuilderField, dynamic> getPassordValue(
+    BuildContext context,
+  ) {
     return context
         .read<RegisterCubit>()
         .formKey
