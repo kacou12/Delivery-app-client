@@ -21,12 +21,17 @@ import 'package:my/features/auth/presentation/pages/onboarding_screen.dart';
 import 'package:my/features/auth/presentation/pages/register_screen.dart';
 import 'package:my/features/chat/chat_screen.dart';
 import 'package:my/features/general/pages/splash_screen.dart';
+import 'package:my/features/products/products_order/order_confirmation_screen.dart';
+import 'package:my/features/products/products_order/product_detail_screen.dart';
+import 'package:my/features/products/products_order/product_payment_screen.dart';
+import 'package:my/features/products/products_order/product_shipping_info_screen.dart';
 import 'package:my/features/products/products_screen.dart';
 import 'package:my/features/settings/settings_screen.dart';
 import 'package:my/features/users/users_profil_screen.dart';
 import 'package:my/features/users/users_screen.dart';
 
 part 'router.main.dart';
+part 'user_routes/user_routes.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _forgotPasswordNavigatorKey = GlobalKey<NavigatorState>(

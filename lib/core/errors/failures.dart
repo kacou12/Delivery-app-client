@@ -17,16 +17,14 @@ class ServerFailure extends Failure {
   const ServerFailure({required super.message, required super.statusCode});
 
   ServerFailure.fromException(ServerException e)
-      : this(message: e.message, statusCode: e.statusCode);
+    : this(message: e.message, statusCode: e.statusCode);
 }
 
 class CacheFailure extends Failure {
   // 3 - Data not found in cache --> Just custom code I made up
-  const CacheFailure(
-      {super.message = "Veuillez verifier votre connection internet"})
-      : super(
-          statusCode: 503,
-        );
+  const CacheFailure({
+    super.message = "Veuillez verifier votre connection internet",
+  }) : super(statusCode: 503);
 
   CacheFailure.fromException(CacheException e) : this(message: e.message);
 }

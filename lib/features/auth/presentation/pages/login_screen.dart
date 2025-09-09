@@ -141,15 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               return Container();
             }(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SignInWithAppleButton(
-                  onPressed: () {
-                    context.read<LoginCubit>().loginWithApple();
-                  },
-                ),
-              ],
+            SignInWithAppleButton(
+              onPressed: () {
+                context.read<LoginCubit>().loginWithApple();
+              },
             ),
           ],
         ),

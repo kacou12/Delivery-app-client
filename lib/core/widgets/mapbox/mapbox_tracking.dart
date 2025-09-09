@@ -5,46 +5,20 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart' as gl;
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart' as mp;
 
-// class ProductsScreen extends StatelessWidget {
-//   const ProductsScreen({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     var height = MediaQuery.sizeOf(context).height;
-
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Text(
-//           "sectionTitle products",
-//           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-//               fontWeight: FontWeight.w500,
-//               // color: const Color.fromARGB(255, 113, 113, 113)),
-//               color: Colors.black),
-//         ),
-//         const Text("products"),
-//         SizedBox(
-//           height: height * 0.02,
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-class ProductsScreen extends StatefulWidget {
-  @override
-  final Widget leading = const Icon(Icons.map);
-  @override
-  final String title = 'Full screen map';
-  @override
-  final String? subtitle = null;
-
-  const ProductsScreen({super.key});
+class MapboxTracking extends StatefulWidget {
+  const MapboxTracking({
+    required this.restaurant,
+    required this.tokenSocketDeliveryPerson,
+    super.key,
+  });
+  final RestaurantMapData restaurant;
+  final String tokenSocketDeliveryPerson;
 
   @override
-  State createState() => ProductsScreenState();
+  State createState() => MapboxTrackingState();
 }
 
-class ProductsScreenState extends State<ProductsScreen> {
+class MapboxTrackingState extends State<MapboxTracking> {
   mp.MapboxMap? mapboxMapController;
   StreamSubscription<gl.Position>? userPositionStream;
 
@@ -56,7 +30,7 @@ class ProductsScreenState extends State<ProductsScreen> {
 
   final List<MarkerData> markersData = [
     MarkerData(
-      id: "marker1",
+      id: "marker1_delivery",
       latitude: 5.362296,
       longitude: -3.937725,
       title: "Tour Eiffel",
@@ -65,17 +39,6 @@ class ProductsScreenState extends State<ProductsScreen> {
       address: "Champ de Mars, 5 Avenue Anatole France, 75007 Paris",
       phone: "+33 8 92 70 12 39",
       website: "https://www.toureiffel.paris",
-    ),
-    MarkerData(
-      id: "marker2",
-      latitude: 48.8606,
-      longitude: 2.3376,
-      title: "Musée du Louvre",
-      description: "Plus grand musée d'art au monde",
-      category: "Musée",
-      address: "Rue de Rivoli, 75001 Paris",
-      phone: "+33 1 40 20 50 50",
-      website: "https://www.louvre.fr",
     ),
   ];
 
@@ -215,6 +178,7 @@ class ProductsScreenState extends State<ProductsScreen> {
 
     userPositionStream?.cancel();
 
+    //TODO REPLACE getPositionStream BY USER POSITION STREAM FROM LOCATION
     userPositionStream =
         gl.Geolocator.getPositionStream(
           locationSettings: locationSettings,
@@ -527,4 +491,22 @@ void _makePhoneCall(String phone) {
 void _openWebsite(String website) {
   // Implémenter l'ouverture du site web
   // Vous pouvez utiliser url_launcher: launch(website)
+}
+
+class RestaurantMapData {
+  final double longitude;
+  final double latitude;
+  final String name;
+  final String address;
+  final String phone;
+  final String website;
+
+  RestaurantMapData({
+    required this.longitude,
+    required this.latitude,
+    required this.name,
+    required this.address,
+    required this.phone,
+    required this.website,
+  });
 }
