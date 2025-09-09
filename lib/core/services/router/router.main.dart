@@ -11,7 +11,7 @@ class AppRouter extends GoRouter {
         refreshListenable: GoRouterRefreshStream(authBloc.stream),
         observers: <NavigatorObserver>[RouterObserver()],
         initialLocation: PageRoutes.splashScreen.path,
-        navigatorKey: _rootNavigatorKey,
+        navigatorKey: rootNavigatorKey,
         routingConfig: ValueNotifier<RoutingConfig>(
           RoutingConfig(
             redirect: (context, state) async {
