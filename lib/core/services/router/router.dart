@@ -33,7 +33,7 @@ import 'package:my/features/users/users_screen.dart';
 part 'router.main.dart';
 part 'user_routes/user_routes.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _forgotPasswordNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'sectionANav',
 );

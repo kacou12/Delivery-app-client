@@ -70,6 +70,7 @@ dependencies:
   shimmer_animation: ^2.2.2
   sign_in_with_apple: ^7.0.1
   hydrated_bloc: ^10.1.1
+  onesignal_flutter: ^5.3.4
 
 
 dependency_overrides:
