@@ -1,4 +1,4 @@
-import 'package:my/core/helper/helper_type.dart';
+import 'package:my/core/helper/pagination_list.dart';
 import 'package:my/core/network/network_info.dart';
 import 'package:my/core/utils/typedefs.dart';
 import 'package:my/features/restaurants/data/datasources/restaurant_local_data_source.dart';

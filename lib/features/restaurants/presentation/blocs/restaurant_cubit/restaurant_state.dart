@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:my/core/helper/helper_type.dart';
+import 'package:my/core/helper/pagination_list.dart';
 import 'package:my/features/restaurants/data/models/restaurant_model.dart';
 
 class RestaurantMapState extends Equatable {
@@ -8,8 +8,6 @@ class RestaurantMapState extends Equatable {
   final RestaurantModel? selectedRestaurant;
   final LatLng? mapCenter;
   final String? searchQuery;
-  // final bool? isLoading;
-  // final String? errorMessage;
 
   const RestaurantMapState({
     this.restaurants = const [],
@@ -17,8 +15,6 @@ class RestaurantMapState extends Equatable {
     this.paginateRestaurants,
     this.mapCenter,
     this.searchQuery,
-    // this.isLoading,
-    // this.errorMessage,
   });
 
   @override
@@ -28,8 +24,6 @@ class RestaurantMapState extends Equatable {
     paginateRestaurants,
     mapCenter,
     searchQuery,
-    // isLoading,
-    // errorMessage,
   ];
 
   RestaurantMapState copyWith({
@@ -47,8 +41,6 @@ class RestaurantMapState extends Equatable {
       mapCenter: mapCenter ?? this.mapCenter,
       searchQuery: searchQuery ?? this.searchQuery,
       paginateRestaurants: paginateRestaurants ?? this.paginateRestaurants,
-      // isLoading: isLoading ?? this.isLoading,
-      // errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }
@@ -63,10 +55,7 @@ class RestaurantMapFailure extends RestaurantMapState {
   RestaurantMapFailure({
     required this.errorMessage,
     required RestaurantMapState state,
-    // required String errorMessage,
   }) : super(
-         //  isLoading: false,
-         //  errorMessage: errorMessage,
          mapCenter: state.mapCenter,
          paginateRestaurants: state.paginateRestaurants,
          restaurants: state.restaurants,
@@ -79,8 +68,6 @@ class RestaurantMapLoading extends RestaurantMapState {
   final bool isLoading;
   RestaurantMapLoading(RestaurantMapState state, {this.isLoading = true})
     : super(
-        // isLoading: true,
-        // errorMessage: null,
         mapCenter: state.mapCenter,
         paginateRestaurants: state.paginateRestaurants,
         restaurants: state.restaurants,

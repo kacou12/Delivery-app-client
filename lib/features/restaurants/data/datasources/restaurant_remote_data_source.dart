@@ -1,6 +1,6 @@
 import 'package:my/core/api/dio_client.dart';
 import 'package:my/core/core.dart';
-import 'package:my/core/helper/helper_type.dart';
+import 'package:my/core/helper/pagination_list.dart';
 import 'package:my/core/utils/typedefs.dart';
 import 'package:my/features/restaurants/data/models/restaurant_model.dart';
 import 'package:my/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
