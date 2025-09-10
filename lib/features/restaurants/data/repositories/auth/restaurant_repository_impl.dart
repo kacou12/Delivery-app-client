@@ -18,13 +18,14 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
   @override
   FutureResult<PaginationList<RestaurantModel>> filterRestaurants({
     required FilterRestaurantsRequest requests,
+    int page = 1,
   }) {
     // TODO: implement filterRestaurants
     throw UnimplementedError();
   }
 
   @override
-  FutureResult<PaginationList<RestaurantModel>> loadNearbyRestaurants({
+  FutureResult<List<RestaurantModel>> loadNearbyRestaurants({
     required double lat,
     required double lng,
   }) {
@@ -33,9 +34,10 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
   }
 
   @override
-  FutureResult<PaginationList<RestaurantModel>> searchRestaurants(
-    String query,
-  ) {
+  FutureResult<PaginationList<RestaurantModel>> searchRestaurants({
+    String? query,
+    int page = 1,
+  }) {
     // TODO: implement searchRestaurants
     throw UnimplementedError();
   }
