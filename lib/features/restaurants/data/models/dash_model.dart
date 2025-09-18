@@ -12,6 +12,7 @@ abstract class DashModel with _$DashModel {
     required String name,
     required String image,
     required int rate,
+    required int price,
     required String description,
     required RestaurantModel restaurant,
     required String durationCook,
@@ -24,6 +25,7 @@ abstract class DashModel with _$DashModel {
       description: '',
       image: '',
       rate: 0,
+      price: 0,
       restaurant: RestaurantModel.emptyData(),
       durationCook: '00H00',
     );

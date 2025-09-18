@@ -11,6 +11,7 @@ _DashModel _$DashModelFromJson(Map<String, dynamic> json) => _DashModel(
   name: json['name'] as String,
   image: json['image'] as String,
   rate: (json['rate'] as num).toInt(),
+  price: (json['price'] as num).toInt(),
   description: json['description'] as String,
   restaurant: RestaurantModel.fromJson(
     json['restaurant'] as Map<String, dynamic>,
@@ -24,6 +25,7 @@ Map<String, dynamic> _$DashModelToJson(_DashModel instance) =>
       'name': instance.name,
       'image': instance.image,
       'rate': instance.rate,
+      'price': instance.price,
       'description': instance.description,
       'restaurant': instance.restaurant,
       'durationCook': instance.durationCook,

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DashModel {
 
- String get id; String get name; String get image; int get rate; String get description; RestaurantModel get restaurant; String get durationCook;
+ String get id; String get name; String get image; int get rate; int get price; String get description; RestaurantModel get restaurant; String get durationCook;
 /// Create a copy of DashModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $DashModelCopyWith<DashModel> get copyWith => _$DashModelCopyWithImpl<DashModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DashModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.image, image) || other.image == image)&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.description, description) || other.description == description)&&(identical(other.restaurant, restaurant) || other.restaurant == restaurant)&&(identical(other.durationCook, durationCook) || other.durationCook == durationCook));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DashModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.image, image) || other.image == image)&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.restaurant, restaurant) || other.restaurant == restaurant)&&(identical(other.durationCook, durationCook) || other.durationCook == durationCook));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,image,rate,description,restaurant,durationCook);
+int get hashCode => Object.hash(runtimeType,id,name,image,rate,price,description,restaurant,durationCook);
 
 @override
 String toString() {
-  return 'DashModel(id: $id, name: $name, image: $image, rate: $rate, description: $description, restaurant: $restaurant, durationCook: $durationCook)';
+  return 'DashModel(id: $id, name: $name, image: $image, rate: $rate, price: $price, description: $description, restaurant: $restaurant, durationCook: $durationCook)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $DashModelCopyWith<$Res>  {
   factory $DashModelCopyWith(DashModel value, $Res Function(DashModel) _then) = _$DashModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String image, int rate, String description, RestaurantModel restaurant, String durationCook
+ String id, String name, String image, int rate, int price, String description, RestaurantModel restaurant, String durationCook
 });
 
 
@@ -65,12 +65,13 @@ class _$DashModelCopyWithImpl<$Res>
 
 /// Create a copy of DashModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? image = null,Object? rate = null,Object? description = null,Object? restaurant = null,Object? durationCook = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? image = null,Object? rate = null,Object? price = null,Object? description = null,Object? restaurant = null,Object? durationCook = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,rate: null == rate ? _self.rate : rate // ignore: cast_nullable_to_non_nullable
+as int,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,restaurant: null == restaurant ? _self.restaurant : restaurant // ignore: cast_nullable_to_non_nullable
 as RestaurantModel,durationCook: null == durationCook ? _self.durationCook : durationCook // ignore: cast_nullable_to_non_nullable
@@ -168,10 +169,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String image,  int rate,  String description,  RestaurantModel restaurant,  String durationCook)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String image,  int rate,  int price,  String description,  RestaurantModel restaurant,  String durationCook)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DashModel() when $default != null:
-return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_that.restaurant,_that.durationCook);case _:
+return $default(_that.id,_that.name,_that.image,_that.rate,_that.price,_that.description,_that.restaurant,_that.durationCook);case _:
   return orElse();
 
 }
@@ -189,10 +190,10 @@ return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String image,  int rate,  String description,  RestaurantModel restaurant,  String durationCook)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String image,  int rate,  int price,  String description,  RestaurantModel restaurant,  String durationCook)  $default,) {final _that = this;
 switch (_that) {
 case _DashModel():
-return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_that.restaurant,_that.durationCook);case _:
+return $default(_that.id,_that.name,_that.image,_that.rate,_that.price,_that.description,_that.restaurant,_that.durationCook);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,10 +210,10 @@ return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String image,  int rate,  String description,  RestaurantModel restaurant,  String durationCook)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String image,  int rate,  int price,  String description,  RestaurantModel restaurant,  String durationCook)?  $default,) {final _that = this;
 switch (_that) {
 case _DashModel() when $default != null:
-return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_that.restaurant,_that.durationCook);case _:
+return $default(_that.id,_that.name,_that.image,_that.rate,_that.price,_that.description,_that.restaurant,_that.durationCook);case _:
   return null;
 
 }
@@ -224,13 +225,14 @@ return $default(_that.id,_that.name,_that.image,_that.rate,_that.description,_th
 @JsonSerializable()
 
 class _DashModel extends DashModel {
-  const _DashModel({required this.id, required this.name, required this.image, required this.rate, required this.description, required this.restaurant, required this.durationCook}): super._();
+  const _DashModel({required this.id, required this.name, required this.image, required this.rate, required this.price, required this.description, required this.restaurant, required this.durationCook}): super._();
   factory _DashModel.fromJson(Map<String, dynamic> json) => _$DashModelFromJson(json);
 
 @override final  String id;
 @override final  String name;
 @override final  String image;
 @override final  int rate;
+@override final  int price;
 @override final  String description;
 @override final  RestaurantModel restaurant;
 @override final  String durationCook;
@@ -248,16 +250,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DashModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.image, image) || other.image == image)&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.description, description) || other.description == description)&&(identical(other.restaurant, restaurant) || other.restaurant == restaurant)&&(identical(other.durationCook, durationCook) || other.durationCook == durationCook));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DashModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.image, image) || other.image == image)&&(identical(other.rate, rate) || other.rate == rate)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.restaurant, restaurant) || other.restaurant == restaurant)&&(identical(other.durationCook, durationCook) || other.durationCook == durationCook));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,image,rate,description,restaurant,durationCook);
+int get hashCode => Object.hash(runtimeType,id,name,image,rate,price,description,restaurant,durationCook);
 
 @override
 String toString() {
-  return 'DashModel(id: $id, name: $name, image: $image, rate: $rate, description: $description, restaurant: $restaurant, durationCook: $durationCook)';
+  return 'DashModel(id: $id, name: $name, image: $image, rate: $rate, price: $price, description: $description, restaurant: $restaurant, durationCook: $durationCook)';
 }
 
 
@@ -268,7 +270,7 @@ abstract mixin class _$DashModelCopyWith<$Res> implements $DashModelCopyWith<$Re
   factory _$DashModelCopyWith(_DashModel value, $Res Function(_DashModel) _then) = __$DashModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String image, int rate, String description, RestaurantModel restaurant, String durationCook
+ String id, String name, String image, int rate, int price, String description, RestaurantModel restaurant, String durationCook
 });
 
 
@@ -285,12 +287,13 @@ class __$DashModelCopyWithImpl<$Res>
 
 /// Create a copy of DashModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? image = null,Object? rate = null,Object? description = null,Object? restaurant = null,Object? durationCook = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? image = null,Object? rate = null,Object? price = null,Object? description = null,Object? restaurant = null,Object? durationCook = null,}) {
   return _then(_DashModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,rate: null == rate ? _self.rate : rate // ignore: cast_nullable_to_non_nullable
+as int,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,restaurant: null == restaurant ? _self.restaurant : restaurant // ignore: cast_nullable_to_non_nullable
 as RestaurantModel,durationCook: null == durationCook ? _self.durationCook : durationCook // ignore: cast_nullable_to_non_nullable
