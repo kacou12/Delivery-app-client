@@ -36,6 +36,7 @@ class RestaurantRemoteDataSourceImpl implements RestaurantRemoteDataSource {
       queryParameters: {...requests.toJson(), 'page': page},
       converter: (response) => PaginationList<RestaurantModel>.fromJson(
         response as Map<String, dynamic>,
+        (json) => RestaurantModel.fromJson(json as Map<String, dynamic>),
       ),
 
       // converter: (response) => List<RestaurantModel>.from(
@@ -58,6 +59,7 @@ class RestaurantRemoteDataSourceImpl implements RestaurantRemoteDataSource {
       queryParameters: {'query': query, 'page': page},
       converter: (response) => PaginationList<RestaurantModel>.fromJson(
         response as Map<String, dynamic>,
+        (json) => RestaurantModel.fromJson(json as Map<String, dynamic>),
       ),
     );
     return response;

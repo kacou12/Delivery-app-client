@@ -1,30 +1,44 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
+class PaginationList<T> {
+  const PaginationList({required this.items, this.total, this.hasNext});
 
-part 'pagination_list.freezed.dart';
-part 'pagination_list.g.dart';
-
-@freezed(genericArgumentFactories: true)
-class PaginationList<T> with _$PaginationList<T> {
-  const factory PaginationList({
-    required List<T> items,
-    int? total,
-    @JsonKey(name: 'has_next') bool? hasNext,
-  }) = _PaginationList;
+  final List<T> items;
+  final int? total;
+  final bool? hasNext;
 
   factory PaginationList.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
-  ) => _$PaginationListFromJson(json, fromJsonT);
+  ) {
+    final items = (json['items'] as List<dynamic>)
+        .map((item) => fromJsonT(item))
+        .toList();
+    final total = json['total'] as int?;
+    final hasNext = json['has_next'] as bool?;
+
+    return PaginationList<T>(items: items, total: total, hasNext: hasNext);
+  }
+
+  Map<String, dynamic> toJson(Object? Function(T value) toJsonT) {
+    return {
+      'items': items.map(toJsonT).toList(),
+      'total': total,
+      'has_next': hasNext,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'PaginationList(items: ${items.length}, total: $total, hasNext: $hasNext)';
+  }
 }
 
-// class LatLng {
-//   final double lat;
-//   final double lng;
+class LatLng {
+  final double lat;
+  final double lng;
 
-//   LatLng(this.lat, this.lng);
+  LatLng(this.lat, this.lng);
 
-//   factory LatLng.fromJson(Map<String, dynamic> json) {
-//     return LatLng(json['lat'] as double, json['lng'] as double);
-//   }
-// }
+  factory LatLng.fromJson(Map<String, dynamic> json) {
+    return LatLng(json['lat'] as double, json['lng'] as double);
+  }
+}
