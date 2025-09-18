@@ -15,4 +15,9 @@ abstract class ListAPI {
 
   /// User
   static const String users = "/user/all";
+
+  /// Restaurant
+  static const String searchRestaurants = "/restaurant/search-restaurants";
+  static const String filterRestaurants = "/restaurant/filters-restaurants";
+  static const String nearbyRestaurants = "/restaurant/load-nearby-restaurants";
 }
