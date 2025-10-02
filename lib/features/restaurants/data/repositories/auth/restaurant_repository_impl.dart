@@ -41,4 +41,25 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
     // TODO: implement searchRestaurants
     throw UnimplementedError();
   }
+
+  //   @override
+  // Future<Either<Failure, List<SwiitPlanClub>>> getSwiitPlanClub() async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final remoteSwiitPlanClubs = await remoteDataSource.getSwiitPlanClub();
+  //       await localDataSource.cacheSwiitPlanClub(remoteSwiitPlanClubs);
+  //       return Right(remoteSwiitPlanClubs);
+  //     } on ServerException catch (e) {
+  //       return Left(ServerFailure(message: e.toString()));
+  //     }
+  //   } else {
+  //     try {
+  //       final localSwiitPlanClubs =
+  //           await localDataSource.getLastSwiitPlanClub();
+  //       return Right(localSwiitPlanClubs);
+  //     } on CacheException catch (e) {
+  //       return Left(CacheFailure(message: e.toString()));
+  //     }
+  //   }
+  // }
 }
