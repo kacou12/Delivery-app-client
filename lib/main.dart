@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:my/core/services/firebase/firebase_services.dart';
+import 'package:my/core/services/geolocator_service.dart';
 import 'package:my/core/services/injection_container.dart';
 import 'package:my/core/services/onesignal/onesignal_services.dart';
 import 'package:my/core/services/router/page_routes.enum.dart';
@@ -22,7 +23,8 @@ void main() {
     MapboxOptions.setAccessToken(dotenv.env['MAPBOX_ACCESS_TOKEN']!);
     await injectionContainer();
     await FirebaseServices.init();
-    await Geolocator.getCurrentPosition();
+    await GeolocatorService.determinePosition();
+    // await Geolocator.getCurrentPosition();
 
     OneSignalServices.setup();
     OneSignalServices.addForegroundWillDisplayListener();

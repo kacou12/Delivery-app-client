@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my/core/core.dart';
 import 'package:my/core/helper/pagination_list.dart';
+import 'package:my/core/services/geolocator_service.dart';
 import 'package:my/features/restaurants/data/repositories/auth/restaurant_repository_impl.dart';
 import 'package:my/features/restaurants/presentation/blocs/restaurant_cubit/restaurant_state.dart';
 
@@ -26,7 +27,8 @@ class RestaurantMapCubit extends Cubit<RestaurantMapState> {
       if (lat != null && lng != null) {
         center = LatLng(lat, lng);
       } else {
-        final position = await Geolocator.getCurrentPosition();
+        // final position = await Geolocator.getCurrentPosition();
+        final position = await GeolocatorService.determinePosition();
         center = LatLng(position.latitude, position.longitude);
       }
 

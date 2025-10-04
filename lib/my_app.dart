@@ -22,33 +22,27 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => sl<AuthBloc>(),
-              ),
-              BlocProvider(
-                create: (context) => sl<LoginCubit>(),
-              ),
+          providers: [
+            BlocProvider(create: (context) => sl<AuthBloc>()),
+            BlocProvider(create: (context) => sl<LoginCubit>()),
 
-              // Vous pouvez ajouter plus de blocs/providers ici
+            // Vous pouvez ajouter plus de blocs/providers ici
+          ],
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: router,
+            title: HelperConstants.appName,
+            theme: themeLight(context),
+            // darkTheme: themeDark(context),
+            locale: const Locale('en', 'EN'),
+            supportedLocales: const [Locale('en', ''), Locale('fr', '')],
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
             ],
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              routerConfig: router,
-              title: HelperConstants.appName,
-              theme: themeLight(context),
-              darkTheme: themeDark(context),
-              locale: const Locale('en', 'EN'),
-              supportedLocales: const [
-                Locale('en', ''),
-                Locale('fr', ''),
-              ],
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-            )),
+          ),
+        ),
       ),
     );
   }
