@@ -107,9 +107,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 
@@ -202,9 +200,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 
@@ -242,9 +238,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 }

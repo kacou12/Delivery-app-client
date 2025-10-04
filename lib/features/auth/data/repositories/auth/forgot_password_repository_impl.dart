@@ -30,9 +30,7 @@ class ForgotPasswordRepositoryImpl implements ForgotPasswordRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 
@@ -55,9 +53,7 @@ class ForgotPasswordRepositoryImpl implements ForgotPasswordRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 
@@ -74,9 +70,7 @@ class ForgotPasswordRepositoryImpl implements ForgotPasswordRepository {
         return Left(CacheFailure(message: "$e"));
       }
     } else {
-      return const Left(
-        CacheFailure(message: "Veuillez verifier votre connection internet"),
-      );
+      return const Left(CacheFailure());
     }
   }
 }

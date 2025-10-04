@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:my/core/api/api_result.dart';
+import 'package:my/core/api/cache_manager.dart';
 import 'package:my/core/core.dart';
 import 'package:my/core/utils/constants/network_constants.dart';
 import 'package:my/core/utils/typedefs.dart';
@@ -40,7 +42,13 @@ class DioClient {
       _instance = DioClient._internal(dio, auth);
     }
     _instance!._addAuthInterceptor();
+    _instance!._addCacheInterceptor();
+
     return _instance!;
+  }
+
+  void _addCacheInterceptor() async {
+    CacheManager().attachToDio(_dio);
   }
 
   void _addAuthInterceptor() async {
@@ -101,9 +109,20 @@ class DioClient {
     String url, {
     Map<String, dynamic>? queryParameters,
     required ResponseConverter<T> converter,
+    CacheOptionsParameters? cacheOptions,
   }) async {
     try {
-      final response = await _dio.get(url, queryParameters: queryParameters);
+      final response = await _dio.get(
+        url,
+        queryParameters: queryParameters,
+        options: CacheManager()
+            .createCacheOptions(
+              expireAt: cacheOptions?.expireAt,
+              fixedDuration: cacheOptions?.fixedDuration,
+              secondsFromNow: cacheOptions?.secondsFromNow,
+            )
+            .toOptions(),
+      );
       if ((response.statusCode ?? 0) < 200 ||
           (response.statusCode ?? 0) > 201) {
         throw ServerException(
@@ -163,7 +182,7 @@ class DioClient {
     catch (e) {
       return const Left(
         ServerFailure(
-          message: "Erro  r Occurred: It's not your fault, it's ours",
+          message: "Error Occurred: It's not your fault, it's ours",
           statusCode: 500,
         ),
       );
