@@ -1,3 +1,5 @@
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:my/core/api/cache_manager.dart';
 import 'package:my/core/api/dio_client.dart';
 import 'package:my/core/core.dart';
 import 'package:my/core/helper/pagination_list.dart';
@@ -72,6 +74,7 @@ class RestaurantRemoteDataSourceImpl implements RestaurantRemoteDataSource {
   }) async {
     final response = await dio.getRequest(
       ListAPI.nearbyRestaurants,
+      cacheOptions: CacheOptionsParameters(policy: CachePolicy.noCache),
       queryParameters: {'lat': lat, 'lng': lng},
       converter: (response) => List<RestaurantModel>.from(
         (response as List).map(

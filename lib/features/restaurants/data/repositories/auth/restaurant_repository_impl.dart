@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:my/core/core.dart';
 import 'package:my/core/helper/pagination_list.dart';
 import 'package:my/core/network/network_info.dart';
 import 'package:my/core/utils/typedefs.dart';
@@ -19,26 +21,61 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
   FutureResult<PaginationList<RestaurantModel>> filterRestaurants({
     required FilterRestaurantsRequest requests,
     int page = 1,
-  }) {
-    // TODO: implement filterRestaurants
-    throw UnimplementedError();
+  }) async {
+    if (await networkInfo.isConnected) {
+      final response = await remoteDataSource.filterRestaurants(
+        requests: requests,
+        page: page,
+      );
+
+      return response.fold((failure) => Left(failure), (response) async {
+        return Right(response);
+      });
+    } else {
+      return const Left(CacheFailure());
+    }
   }
+
+  //--------------------------------------------------------------------------
 
   @override
   FutureResult<List<RestaurantModel>> loadNearbyRestaurants({
     required double lat,
     required double lng,
-  }) {
-    // TODO: implement loadNearbyRestaurants
-    throw UnimplementedError();
+  }) async {
+    if (await networkInfo.isConnected) {
+      final response = await remoteDataSource.loadNearbyRestaurants(
+        lat: lat,
+        lng: lng,
+      );
+      return response.fold((failure) => Left(failure), (
+        nearbyRestaurants,
+      ) async {
+        return Right(nearbyRestaurants);
+      });
+    } else {
+      return const Left(CacheFailure());
+    }
   }
+
+  //--------------------------------------------------------------------------
 
   @override
   FutureResult<PaginationList<RestaurantModel>> searchRestaurants({
     String? query,
     int page = 1,
-  }) {
-    // TODO: implement searchRestaurants
-    throw UnimplementedError();
+  }) async {
+    if (await networkInfo.isConnected) {
+      final response = await remoteDataSource.searchRestaurants(
+        query: query,
+        page: page,
+      );
+
+      return response.fold((failure) => Left(failure), (searchResults) async {
+        return Right(searchResults);
+      });
+    } else {
+      return const Left(CacheFailure());
+    }
   }
 }
