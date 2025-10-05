@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my/core/resources/resources.dart';
 
-///*********************************************
-/// Created by ukieTux on 23/04/2020 with ♥
-/// (>’_’)> email : ukie.tux@gmail.com
-/// github : https://www.github.com/Lzyct <(’_’<)
-///*********************************************
-/// © 2020 | All Right Reserved
 class ButtonText extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;

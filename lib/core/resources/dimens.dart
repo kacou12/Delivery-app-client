@@ -50,6 +50,6 @@ abstract class Dimens {
   static double buttonH = 40.w;
   static double imageW = 110.w;
 
-  static const double cornerRadius = 15;
+  static const double cornerRadius = 7.5;
   static const double cornerRadiusBottomSheet = 30;
 }
