@@ -5,7 +5,7 @@ import 'package:my/core/resources/palette.dart';
 
 /// Light theme
 ThemeData themeLight(BuildContext context) => ThemeData(
-  fontFamily: 'Poppins',
+  fontFamily: 'Omnes',
   useMaterial3: true,
   primaryColor: Palette.primary,
   disabledColor: Palette.shadowDark,

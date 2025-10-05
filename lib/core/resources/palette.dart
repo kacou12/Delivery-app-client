@@ -52,14 +52,17 @@ import 'package:flutter/material.dart';
 // 51% — 82   ## 1% — 03
 
 abstract class Palette {
-  static const Color primary = Color(0xffFF7043);
-  static const Color secondary = Color(0xff00838F);
+  static const Color primary = Color(0XFFFE620D);
+  static const Color subPrimary = Color(0XFFFFF3EC);
+  static const Color secondary = Color(0XFF585858);
+  static const Color secondaryBold = Color(0XFF6B7280);
 
   static const Color background = Color(0xffffffff);
   static const Color backgroundDark = Color(0xff0D0D0D);
   static const Color card = primary;
   static const Color cardDark = primary;
-  static const Color text = Color(0xff0D0D0D);
+  static const Color text = Color(0XFF4B5563);
+  static const Color textBold = secondary;
   static const Color textDark = Color(0xffffffff);
   static const Color subText = Color(0xff757575);
   static const Color subTextDark = Color(0xffB0BEC5);
