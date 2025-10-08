@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/helper/pagination_list.dart';
-import 'package:my/core/network/network_info.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/restaurants/data/datasources/restaurant_local_data_source.dart';
-import 'package:my/features/restaurants/data/datasources/restaurant_remote_data_source.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
-import 'package:my/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
-import 'package:my/features/restaurants/data/repositories/auth/restaurant_repository.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/helper/pagination_list.dart';
+import 'package:woudy_customers_app/core/network/network_info.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/restaurants/data/datasources/restaurant_local_data_source.dart';
+import 'package:woudy_customers_app/features/restaurants/data/datasources/restaurant_remote_data_source.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
+import 'package:woudy_customers_app/features/restaurants/data/repositories/auth/restaurant_repository.dart';
 
 class RestaurantRepositoryImpl implements RestaurantRepository {
   final RestaurantRemoteDataSource remoteDataSource;

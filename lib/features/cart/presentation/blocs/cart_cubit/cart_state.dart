@@ -1,4 +1,4 @@
-import 'package:my/features/cart/data/models/cart_model.dart';
+import 'package:woudy_customers_app/features/cart/data/models/cart_model.dart';
 
 class CartState {
   final CartModel cart;

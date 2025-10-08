@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/core.dart';
+import 'package:woudy_customers_app/core/core.dart';
 
 class Loading extends StatelessWidget {
   const Loading({super.key, this.showMessage = true});

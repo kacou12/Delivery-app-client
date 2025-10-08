@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my/core/resources/palette.dart';
+import 'package:woudy_customers_app/core/resources/palette.dart';
 
 class ScreenLayout extends StatefulWidget {
   const ScreenLayout({super.key, required this.child});

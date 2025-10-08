@@ -1,7 +1,7 @@
-import 'package:my/core/errors/exceptions.dart';
-import 'package:my/core/services/hive/hive.dart';
-import 'package:my/core/services/hive/main_box_storage.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/core/errors/exceptions.dart';
+import 'package:woudy_customers_app/core/services/hive/hive.dart';
+import 'package:woudy_customers_app/core/services/hive/main_box_storage.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
 
 abstract class AuthLocalDataSource {
   Future<UserModel?> loadData();

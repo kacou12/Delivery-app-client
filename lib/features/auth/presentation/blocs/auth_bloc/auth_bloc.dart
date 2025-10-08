@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
-import 'package:my/features/auth/data/repositories/auth/auth_repository_impl.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/features/auth/data/repositories/auth/auth_repository_impl.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -30,9 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           if (result is RightResult<UserModel?> && result.value != null) {
             await Future.delayed(const Duration(seconds: 2));
-            emit(
-              AuthState.authenticated(result.value!),
-            );
+            emit(AuthState.authenticated(result.value!));
           } else {
             emit(AuthState.unauthenticated());
           }
@@ -47,13 +45,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final userData = await authRepositoryImpl.currentUser;
 
         if (userData is RightResult<UserModel?> && userData.value != null) {
-          emit(
-            AuthState.authenticated(userData.value!),
-          );
+          emit(AuthState.authenticated(userData.value!));
         } else {
-          emit(
-            AuthState.unauthenticated(),
-          );
+          emit(AuthState.unauthenticated());
         }
       // }
     }

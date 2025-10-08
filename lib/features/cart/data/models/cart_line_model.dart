@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:my/features/cart/data/models/cart_item_model.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/cart/data/models/cart_item_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
 
 class CartLineModel extends Equatable {
   final String id;

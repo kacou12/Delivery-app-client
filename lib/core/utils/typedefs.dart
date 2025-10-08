@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:my/core/errors/failures.dart';
+import 'package:woudy_customers_app/core/errors/failures.dart';
 
 typedef DataMap = Map<String, dynamic>;
 typedef RightResult<T> = Right<Failure, T>;

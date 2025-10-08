@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 
 class SpacerH extends StatelessWidget {
   const SpacerH({super.key, this.value});
@@ -8,8 +8,6 @@ class SpacerH extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: value ?? Dimens.space8,
-    );
+    return Container(width: value ?? Dimens.space8);
   }
 }

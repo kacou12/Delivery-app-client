@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:my/core/api/dio_client.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
-import 'package:my/features/auth/data/payload/requests/request_auth.dart';
+import 'package:woudy_customers_app/core/api/dio_client.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/features/auth/data/payload/requests/request_auth.dart';
 
 abstract class AuthRemoteDataSource {
   FutureResult<UserModel> login({required RequestLogin requests});

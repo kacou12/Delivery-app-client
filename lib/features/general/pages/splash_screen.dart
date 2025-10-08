@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my/core/resources/images.dart';
-import 'package:my/core/services/router/page_routes.enum.dart';
-import 'package:my/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:woudy_customers_app/core/resources/images.dart';
+import 'package:woudy_customers_app/core/services/router/page_routes.enum.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

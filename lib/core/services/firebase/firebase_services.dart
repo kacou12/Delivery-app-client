@@ -2,7 +2,7 @@ import 'dart:isolate';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:my/core/services/firebase/firebase_options.dart';
+import 'package:woudy_customers_app/core/services/firebase/firebase_options.dart';
 
 mixin FirebaseServices {
   static Future<void> init() async {

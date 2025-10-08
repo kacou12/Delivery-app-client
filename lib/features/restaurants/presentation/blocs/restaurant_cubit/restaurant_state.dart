@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:my/core/helper/pagination_list.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/core/helper/pagination_list.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
 
 class RestaurantMapState extends Equatable {
   final List<RestaurantModel>? restaurants;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 
 class UsersProfilScreen extends StatelessWidget {
   const UsersProfilScreen({super.key});
@@ -18,9 +18,10 @@ class UsersProfilScreen extends StatelessWidget {
                 Text(
                   "user profil page",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      // color: const Color.fromARGB(255, 113, 113, 113)),
-                      color: Colors.black),
+                    fontWeight: FontWeight.w500,
+                    // color: const Color.fromARGB(255, 113, 113, 113)),
+                    color: Colors.black,
+                  ),
                 ),
               ],
             );

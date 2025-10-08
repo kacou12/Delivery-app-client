@@ -1,9 +1,9 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:my/features/cart/data/models/cart_item_model.dart';
-import 'package:my/features/cart/data/models/cart_line_model.dart';
-import 'package:my/features/cart/data/models/cart_model.dart';
-import 'package:my/features/restaurants/data/models/dash_model.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/cart/data/models/cart_item_model.dart';
+import 'package:woudy_customers_app/features/cart/data/models/cart_line_model.dart';
+import 'package:woudy_customers_app/features/cart/data/models/cart_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/dash_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
 import 'package:uuid/uuid.dart';
 
 import 'cart_state.dart';

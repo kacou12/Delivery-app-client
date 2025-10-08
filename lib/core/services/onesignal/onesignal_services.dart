@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:my/core/services/router/page_routes.enum.dart';
-import 'package:my/core/services/router/router.dart';
+import 'package:woudy_customers_app/core/services/router/page_routes.enum.dart';
+import 'package:woudy_customers_app/core/services/router/router.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 

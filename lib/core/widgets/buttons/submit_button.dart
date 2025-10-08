@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({
@@ -50,11 +50,7 @@ class SubmitButton extends StatelessWidget {
     return BoxDecoration(
       color: Palette.primary,
       borderRadius: BorderRadius.circular(10),
-      border: isOutlined
-          ? Border.all(
-              color: Colors.white,
-            )
-          : null,
+      border: isOutlined ? Border.all(color: Colors.white) : null,
     );
   }
 }

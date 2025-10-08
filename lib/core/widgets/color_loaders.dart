@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import "package:flutter/material.dart";
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 
 class ColorLoader extends StatefulWidget {
   final double radius;
@@ -36,10 +36,7 @@ class ColorLoaderState extends State<ColorLoader>
     );
 
     animationRotation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: const Interval(0.0, 1.0),
-      ),
+      CurvedAnimation(parent: controller, curve: const Interval(0.0, 1.0)),
     );
 
     animationRadiusIn = Tween(begin: 1.0, end: 0.0).animate(
@@ -85,30 +82,18 @@ class ColorLoaderState extends State<ColorLoader>
               children: <Widget>[
                 Transform.translate(
                   offset: Offset.zero,
-                  child: Dot(
-                    radius: radius,
-                    color: Colors.black26,
-                  ),
+                  child: Dot(radius: radius, color: Colors.black26),
                 ),
                 Transform.translate(
-                  offset: Offset(
-                    radius! * cos(0.0),
-                    radius! * sin(0.0),
-                  ),
-                  child: Dot(
-                    radius: dotRadius,
-                    color: Palette.primary,
-                  ),
+                  offset: Offset(radius! * cos(0.0), radius! * sin(0.0)),
+                  child: Dot(radius: dotRadius, color: Palette.primary),
                 ),
                 Transform.translate(
                   offset: Offset(
                     radius! * cos(0.0 + 1 * pi / 4),
                     radius! * sin(0.0 + 1 * pi / 4),
                   ),
-                  child: Dot(
-                    radius: dotRadius,
-                    color: Palette.secondary,
-                  ),
+                  child: Dot(radius: dotRadius, color: Palette.secondary),
                 ),
                 Transform.translate(
                   offset: Offset(

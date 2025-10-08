@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 
 class ButtonNotification extends StatelessWidget {
   const ButtonNotification({super.key});

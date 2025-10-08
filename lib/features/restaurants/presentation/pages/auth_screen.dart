@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my/features/auth/presentation/pages/onboarding_screen.dart';
+import 'package:woudy_customers_app/features/auth/presentation/pages/onboarding_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

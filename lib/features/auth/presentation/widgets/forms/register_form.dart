@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/resources/dimens.dart';
-import 'package:my/core/widgets/buttons/submit_button.dart';
-import 'package:my/core/widgets/forms/common_text_form_field.dart';
-import 'package:my/core/widgets/my_form_builder.dart';
-import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
-import 'package:my/features/auth/presentation/blocs/register_cubit/register_cubit.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/resources/dimens.dart';
+import 'package:woudy_customers_app/core/widgets/buttons/submit_button.dart';
+import 'package:woudy_customers_app/core/widgets/forms/common_text_form_field.dart';
+import 'package:woudy_customers_app/core/widgets/my_form_builder.dart';
+import 'package:woudy_customers_app/features/auth/data/repositories/auth/auth_repository.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/register_cubit/register_cubit.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({super.key});

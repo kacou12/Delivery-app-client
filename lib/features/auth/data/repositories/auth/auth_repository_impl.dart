@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:my/core/errors/failures.dart';
-import 'package:my/core/network/network_info.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/auth/data/datasources/auth_local_data_source.dart';
-import 'package:my/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
-import 'package:my/features/auth/data/payload/requests/request_auth.dart';
-import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
+import 'package:woudy_customers_app/core/errors/failures.dart';
+import 'package:woudy_customers_app/core/network/network_info.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:woudy_customers_app/features/auth/data/datasources/auth_remote_data_source.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/features/auth/data/payload/requests/request_auth.dart';
+import 'package:woudy_customers_app/features/auth/data/repositories/auth/auth_repository.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 

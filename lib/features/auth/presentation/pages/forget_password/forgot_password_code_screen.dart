@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my/core/services/router/page_routes.enum.dart';
-import 'package:my/core/widgets/forms/form_input_otp.dart';
-import 'package:my/features/auth/presentation/blocs/forget_password_bloc/forgot_password_bloc.dart';
-import 'package:my/features/auth/presentation/blocs/forget_password_bloc/forgot_password_event.dart';
-import 'package:my/features/auth/presentation/blocs/forget_password_bloc/forgot_password_state.dart';
+import 'package:woudy_customers_app/core/services/router/page_routes.enum.dart';
+import 'package:woudy_customers_app/core/widgets/forms/form_input_otp.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/forget_password_bloc/forgot_password_bloc.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/forget_password_bloc/forgot_password_event.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/forget_password_bloc/forgot_password_state.dart';
 
 class ForgotPasswordCodeScreen extends StatefulWidget {
   final ForgotPasswordEmailSent emailSentState;

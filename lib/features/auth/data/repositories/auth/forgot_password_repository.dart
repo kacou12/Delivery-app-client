@@ -1,4 +1,4 @@
-import 'package:my/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
 
 abstract class ForgotPasswordRepository {
   FutureResult<Map<String, String>> sendPasswordReset(String email);

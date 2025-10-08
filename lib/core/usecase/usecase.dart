@@ -1,4 +1,4 @@
-import 'package:my/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
 
 abstract class UseCase<Type, Params> {
   FutureResult<Type> call(Params params);

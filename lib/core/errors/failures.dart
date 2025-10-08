@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:my/core/errors/exceptions.dart';
+import 'package:woudy_customers_app/core/errors/exceptions.dart';
 
 sealed class Failure extends Equatable {
   const Failure({required this.message, required this.statusCode});

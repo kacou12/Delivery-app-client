@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
-import 'package:my/core/api/api_result.dart';
-import 'package:my/core/api/cache_manager.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/utils/constants/network_constants.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/auth/data/datasources/auth_local_data_source.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/core/api/api_result.dart';
+import 'package:woudy_customers_app/core/api/cache_manager.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/utils/constants/network_constants.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
 
 class DioClient {
   final AuthLocalDataSource auth;
@@ -48,7 +48,7 @@ class DioClient {
   }
 
   void _addCacheInterceptor() async {
-    CacheManager().attachToDio(_dio);
+    CacheManager.instance.attachToDio(_dio);
   }
 
   void _addAuthInterceptor() async {
@@ -115,11 +115,12 @@ class DioClient {
       final response = await _dio.get(
         url,
         queryParameters: queryParameters,
-        options: CacheManager()
+        options: CacheManager.instance
             .createCacheOptions(
               expireAt: cacheOptions?.expireAt,
               fixedDuration: cacheOptions?.fixedDuration,
               secondsFromNow: cacheOptions?.secondsFromNow,
+              policy: cacheOptions?.policy,
             )
             .toOptions(),
       );

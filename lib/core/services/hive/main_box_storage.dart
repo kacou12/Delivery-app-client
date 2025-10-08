@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/utils/constants/network_constants.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/utils/constants/network_constants.dart';
 
 typedef FromJsonFunction<T> = T Function(Map<String, dynamic> json);
 typedef ToJsonFunction<T> = Map<String, dynamic> Function(T object);

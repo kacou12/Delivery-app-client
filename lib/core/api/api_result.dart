@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:my/core/api/api.dart';
+import 'package:woudy_customers_app/core/api/api.dart';
 
 abstract class ApiResult<T> {
   static const String _jsonNodeData = 'data';
@@ -7,20 +7,20 @@ abstract class ApiResult<T> {
   static const String _jsonNodeToken = 'token';
   static const String _jsonNodeRefreshToken = 'refresh_token';
 
-  static T fromResponse<T>(
-      {required Response response,
-      required T Function(dynamic) mapper} // Map<String, dynamic> or List<T>
-      ) {
+  static T fromResponse<T>({
+    required Response response,
+    required T Function(dynamic) mapper, // Map<String, dynamic> or List<T>
+  }) {
     Map<String, dynamic> responseData;
 
     responseData = response.data as Map<String, dynamic>;
 
     if ((response.requestOptions.path.contains(ListAPI.login)
-        // ||
-        // response.requestOptions.path.contains('user/email/verify') ||
-        // response.requestOptions.path.contains('user/google/auth') ||
-        // response.requestOptions.path.contains('user/facebook/auth')
-        )) {
+    // ||
+    // response.requestOptions.path.contains('user/email/verify') ||
+    // response.requestOptions.path.contains('user/google/auth') ||
+    // response.requestOptions.path.contains('user/facebook/auth')
+    )) {
       Map<String, dynamic> items = {};
 
       // Get token

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/resources/resources.dart';
-import 'package:my/core/core.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/core.dart';
 
 class Empty extends StatelessWidget {
   final String errorMessage;
@@ -12,13 +12,8 @@ class Empty extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(
-          Images.icLauncher,
-          width: context.widthInPercent(45),
-        ),
-        Text(
-          errorMessage,
-        ),
+        Image.asset(Images.icLauncher, width: context.widthInPercent(45)),
+        Text(errorMessage),
       ],
     );
   }

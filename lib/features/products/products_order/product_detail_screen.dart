@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my/core/services/router/page_routes.enum.dart';
+import 'package:woudy_customers_app/core/services/router/page_routes.enum.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});

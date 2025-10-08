@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my/core/services/router/page_routes.enum.dart';
+import 'package:woudy_customers_app/core/services/router/page_routes.enum.dart';
 
-import 'package:my/core/widgets/buttons/submit_button.dart';
+import 'package:woudy_customers_app/core/widgets/buttons/submit_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
-import 'package:my/core/ext/context.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:woudy_customers_app/core/ext/context.dart';
 
 class UsersScreen extends StatelessWidget {
   const UsersScreen({super.key});

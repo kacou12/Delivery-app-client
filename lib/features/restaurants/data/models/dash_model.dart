@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
 
 part 'dash_model.freezed.dart';
 part 'dash_model.g.dart';

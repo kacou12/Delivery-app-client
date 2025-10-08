@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/resources/resources.dart';
-import 'package:my/core/services/injection_container.dart';
-import 'package:my/core/services/router/router.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/services/injection_container.dart';
+import 'package:woudy_customers_app/core/services/router/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:my/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
-import 'package:my/features/auth/presentation/blocs/login_cubit/login_cubit.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import 'package:woudy_customers_app/features/auth/presentation/blocs/login_cubit/login_cubit.dart';
 import 'package:oktoast/oktoast.dart';
 
 class MyApp extends StatelessWidget {

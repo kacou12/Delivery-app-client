@@ -1,11 +1,11 @@
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
-import 'package:my/core/api/cache_manager.dart';
-import 'package:my/core/api/dio_client.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/helper/pagination_list.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
-import 'package:my/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
+import 'package:woudy_customers_app/core/api/cache_manager.dart';
+import 'package:woudy_customers_app/core/api/dio_client.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/helper/pagination_list.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
 
 abstract class RestaurantRemoteDataSource {
   FutureResult<List<RestaurantModel>> loadNearbyRestaurants({

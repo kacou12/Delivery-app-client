@@ -1,7 +1,7 @@
-import 'package:my/core/helper/pagination_list.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/restaurants/data/models/restaurant_model.dart';
-import 'package:my/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
+import 'package:woudy_customers_app/core/helper/pagination_list.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/restaurants/data/models/restaurant_model.dart';
+import 'package:woudy_customers_app/features/restaurants/data/payload/requests/filters_restaurant_request.dart';
 
 abstract class RestaurantRepository {
   FutureResult<List<RestaurantModel>> loadNearbyRestaurants({

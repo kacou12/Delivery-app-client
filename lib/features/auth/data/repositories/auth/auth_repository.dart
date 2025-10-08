@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:my/core/utils/typedefs.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/core/utils/typedefs.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
 
 abstract class AuthRepository {
   FutureResult<UserModel> login(RequestParamsLogin request);

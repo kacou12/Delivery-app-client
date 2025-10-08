@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/resources/dimens.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/resources/dimens.dart';
 
 class CircleImage extends StatelessWidget {
   final String url;

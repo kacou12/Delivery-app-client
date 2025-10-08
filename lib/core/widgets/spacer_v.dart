@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/resources/dimens.dart';
+import 'package:woudy_customers_app/core/resources/dimens.dart';
 
 class SpacerV extends StatelessWidget {
   const SpacerV({super.key, this.value});

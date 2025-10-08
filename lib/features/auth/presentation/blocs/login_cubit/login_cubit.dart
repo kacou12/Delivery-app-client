@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:my/core/errors/failures.dart';
-import 'package:my/features/auth/data/models/user_model.dart';
-import 'package:my/features/auth/data/repositories/auth/auth_repository.dart';
-import 'package:my/features/auth/data/repositories/auth/auth_repository_impl.dart';
+import 'package:woudy_customers_app/core/errors/failures.dart';
+import 'package:woudy_customers_app/features/auth/data/models/user_model.dart';
+import 'package:woudy_customers_app/features/auth/data/repositories/auth/auth_repository.dart';
+import 'package:woudy_customers_app/features/auth/data/repositories/auth/auth_repository_impl.dart';
 
 part 'login_state.dart';
 

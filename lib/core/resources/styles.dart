@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my/core/resources/dimens.dart';
-import 'package:my/core/resources/palette.dart';
+import 'package:woudy_customers_app/core/resources/dimens.dart';
+import 'package:woudy_customers_app/core/resources/palette.dart';
 
 /// Light theme
 ThemeData themeLight(BuildContext context) => ThemeData(

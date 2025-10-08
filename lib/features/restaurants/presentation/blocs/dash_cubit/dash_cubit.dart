@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/helper/pagination_list.dart';
-import 'package:my/core/services/geolocator_service.dart';
-import 'package:my/features/restaurants/data/repositories/auth/restaurant_repository_impl.dart';
-import 'package:my/features/restaurants/presentation/blocs/restaurant_cubit/restaurant_state.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/helper/pagination_list.dart';
+import 'package:woudy_customers_app/core/services/geolocator_service.dart';
+import 'package:woudy_customers_app/features/restaurants/data/repositories/auth/restaurant_repository_impl.dart';
+import 'package:woudy_customers_app/features/restaurants/presentation/blocs/restaurant_cubit/restaurant_state.dart';
 
 class RestaurantMapCubit extends Cubit<RestaurantMapState> {
   final RestaurantRepositoryImpl restaurantRepositoryImpl;

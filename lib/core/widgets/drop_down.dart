@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my/core/core.dart';
-import 'package:my/core/resources/resources.dart';
+import 'package:woudy_customers_app/core/core.dart';
+import 'package:woudy_customers_app/core/resources/resources.dart';
 
 class DropDown<T> extends StatefulWidget {
   const DropDown({
